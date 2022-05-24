@@ -8,7 +8,7 @@ namespace Rabbee\Osspid;
 class Osspid
 {
     private $version = '1.1';
-    private $osspid_auth_url = 'https://osspid.org/osspid-client/auth';
+    private $osspid_auth_url;
 
     private $client_id;
     private $client_secret_key;
@@ -19,16 +19,12 @@ class Osspid
      * Osspid constructor.
      * @param array $options
      */
-    public function __construct($options = [
-            'client_id' => config('services.OSSPID.clientId'),
-            'client_secret_key' => config('services.OSSPID.clientSecretKey'),
-            'callback_url' => config('services.OSSPID.callBackUrl'),
-    ])
+    public function __construct()
     {
-
-        $this->client_id = $options['client_id'];
-        $this->client_secret_key = $options['client_secret_key'];
-        $this->callback_url = $options['callback_url'];
+        $this->osspid_auth_url = config('services.OSSPID.authUrl'); 
+        $this->client_id = config('services.OSSPID.clientId');
+        $this->client_secret_key = config('services.OSSPID.clientSecretKey');
+        $this->callback_url = config('services.OSSPID.callBackUrl');
         $this->encryptor = new Encryptor();
     }
 
@@ -62,7 +58,6 @@ class Osspid
      */
     public static function getRedirectURL()
     {
-        dd(234234);
         return (new self)->buildUrl();
     }
 
@@ -74,7 +69,7 @@ class Osspid
      */
     public function verifyOauthToken($oauth_token, $email)
     {
-        $osspid_base_url_local = env('osspid_base_url_ip');
+        $osspid_base_url_local = config('services.OSSPID.baseUrlIp');
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $ip_address = $_SERVER['REMOTE_ADDR'];
 
@@ -121,7 +116,7 @@ class Osspid
      */
     public function requestForIncreaseOauthTokenExpireTime($oauth_token, $email)
     {
-        $osspid_base_url_local = env('osspid_base_url_ip');
+        $osspid_base_url_local = config('services.OSSPID.baseUrlIp');
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
@@ -160,7 +155,7 @@ class Osspid
      */
     public function logoutFromOsspid($oauth_token, $email)
     {
-        $osspid_base_url_local = env('osspid_base_url_ip');
+        $osspid_base_url_local = config('services.OSSPID.baseUrlIp');
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $postdata =
