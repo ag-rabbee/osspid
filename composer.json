@@ -1,0 +1,34 @@
+{
+    "name": "rabbee/osspid",
+    "type": "laravel-package",
+    "description": "To implement osspid in any laravel project",
+    "keywords": [
+        "osspid"
+    ],
+    "homepage": "https://github.com/milonfci/log-viewer",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Controllers"
+        ],
+        "psr-4": {
+            "Rabbee\\Osspid\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Abdul Goni Rabbee",
+            "email": "rabbee@batworld.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rabbee\\Osspid\\OsspidServiceProvider"
+            ]
+        }
+    }
+}
