@@ -42,6 +42,7 @@ The simplest usage of the library to generate `Redirect URL` would be as follows
 
 ```php
 <?php
+use Rabbee\Osspid\Osspid;
 
 $redirect_url = Osspid::getRedirectURL();
 ```
