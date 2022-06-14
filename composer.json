@@ -5,7 +5,7 @@
     "keywords": [
         "osspid"
     ],
-    "homepage": "https://github.com/milonfci/log-viewer",
+    "homepage": "https://github.com/ag-rabbee/osspid",
     "license": "MIT",
     "require": {
         "php": ">=5.6.0"
@@ -20,7 +20,7 @@
     },
     "authors": [
         {
-            "name": "Abdul Goni Rabbee",
+            "name": "Md. Abdul Goni Rabbee",
             "email": "rabbee@batworld.com"
         }
     ],
